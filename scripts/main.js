@@ -49,4 +49,29 @@ function displayPhotos(photos) {
     }
 }
 
-displayPhotos(images);
+
+// displayPhotos(images);
+
+function displayMessage(message) {
+    const main = document.querySelector('main');
+    main.innerHTML = `
+        <p class="alert alert-info text-center">
+        ${message}
+        </p>
+    `;
+}
+
+const canDisplayPhotos = prompt('Czy chciałbyś wyświetlić zdjęcia?');
+
+if (canDisplayPhotos.toLowerCase === 'yes') {
+    displayPhotos(images);
+} else {
+    displayMessage('brak zdjęć')
+    
+}
+// if (images.length === 0) {
+//     displayMessage("brak zdjęć")
+// } else {
+//     displayPhotos(images);
+// }; 
+
