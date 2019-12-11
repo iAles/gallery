@@ -63,7 +63,7 @@ function displayMessage(message) {
 
 const canDisplayPhotos = prompt('Czy chciałbyś wyświetlić zdjęcia?');
 
-if (canDisplayPhotos.toLowerCase === 'yes') {
+if (canDisplayPhotos.toLowerCase()=== 'yes') {
     displayPhotos(images);
 } else {
     displayMessage('brak zdjęć')
