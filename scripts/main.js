@@ -1,6 +1,6 @@
 for (const image of images) {
-//     console.log("To jest obrazek" + image);
-//     console.log('PK');
+    //     console.log("To jest obrazek" + image);
+    //     console.log('PK');
 }
 
 for (let i = 0; i < images.length; i++) {
@@ -13,20 +13,20 @@ for (let i = 0; i < images.length; i++) {
 // const isEmpty2 = (images.length == 0);
 
 function displayImages(params) {
-//     console.log('Liczba obrazków ' + images.length);
-//     console.log('Pierwszy element listy ' + images[0]);
-//     console.log('Drugi element listy ' + images[1]);
+    //     console.log('Liczba obrazków ' + images.length);
+    //     console.log('Pierwszy element listy ' + images[0]);
+    //     console.log('Drugi element listy ' + images[1]);
 }
 
 // displayImages();
 
 function displayLastElment() {
-//     console.log('Ostatni element listy ' + images[images.length - 1]);
-//     console.log('/  ' + 23442423 / 235);
-//     console.log('*  ' + 23442423 * 235);
-//     console.log('+  ' + 23442423 + 235);
-//     console.log('-  ' + 23442423 - 235);
-//     console.log('** ' + 23442423 **5);
+    //     console.log('Ostatni element listy ' + images[images.length - 1]);
+    //     console.log('/  ' + 23442423 / 235);
+    //     console.log('*  ' + 23442423 * 235);
+    //     console.log('+  ' + 23442423 + 235);
+    //     console.log('-  ' + 23442423 - 235);
+    //     console.log('** ' + 23442423 **5);
 
 }
 // displayLastElment();
@@ -45,7 +45,7 @@ function renderPhoto(url) {
 function displayPhotos(photos) {
     console.log(photos);
     for (const photo of photos) {
-        renderPhoto (photo);
+        renderPhoto(photo);
     }
 }
 
@@ -61,14 +61,49 @@ function displayMessage(message) {
     `;
 }
 
-const canDisplayPhotos = prompt('Czy chciałbyś wyświetlić zdjęcia?');
+// const canDisplayPhotos = prompt('Czy chciałbyś wyświetlić zdjęcia?');
 
-if (canDisplayPhotos.toLowerCase()=== 'yes') {
-    displayPhotos(images);
-} else {
-    displayMessage('brak zdjęć')
-    
+function shouldDisplayPhotos() {
+    // const answer = prompt ('Czy chciałbyś wyświetlić zdjęcia?');
+    // return (answer.toLowerCase() === 'yes');
 }
+
+function isPhotosEmpty() {
+    if (images.length != 0) {
+        console.log('zdjęcia istnieją');
+        return (true);
+    }
+
+}
+
+function isEmpty() {
+    return (images.length === 0);
+}
+
+loader.show();
+
+
+if (!isEmpty()) {
+    console.log('zdjęcia istnieją');
+    displayPhotos(images);
+
+} else {
+    console.log('brak zdjęć');
+    displayMessage('brak zdjęć')
+
+}
+
+setTimeout (function () {
+    console.log('chowamy loadera');
+    // @ts-ignore
+    loader.hide();
+}, 1500);
+
+
+
+
+
+
 // if (images.length === 0) {
 //     displayMessage("brak zdjęć")
 // } else {
