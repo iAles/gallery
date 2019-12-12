@@ -68,9 +68,14 @@ function renderPhoto(photo) {
  * @param {Photos} photos
  */
 function displayPhotos(photos) {
-    for (const photo of photos) {
+    // for (const photo of photos) {
+    //     renderPhoto(photo);
+    photos.forEach(function (photo) {
+        console.group(photo.author);
+        console.info(photo.title);
+        console.groupEnd();
         renderPhoto(photo);
-    }
+    })
 }
 
 // Uruchomienie funkcji
@@ -105,6 +110,22 @@ setTimeout(function () {
     loader.hide();
 }, 1500); // 1.5s
 
+const authors = images.map(function (image) {
+    return image.author;
+});
+console.log(authors);
+
+
+const masterPrice = images.reduce(function (memory, image) {
+    console.warn(memory);
+    memory = memory + image.price;
+    return memory;
+}, 0);
+
+const groupByPrice = images.reduce(function (memory, image) {
+	memory[image.price] = image;
+	return memory;
+}, {})
 
 
 
