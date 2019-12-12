@@ -81,21 +81,6 @@ function displayPhotos(photos) {
 // renderPhoto('https://picsum.photos/id/20/300/150');
 // renderPhoto('https://picsum.photos/id/30/300/150');
 
-function displayMessage(message) {
-    const main = document.querySelector('main');
-    // main.textContent = message;
-
-    // Concatenate Strings
-    // main.innerHTML = '<p class="alert alert-info text-center">' + message + '</p>';
-
-    // Template Literal Strings + Interpolacja
-    main.innerHTML = `
-        <p class="alert alert-info text-center">
-        ${message}
-        </p>
-    `;
-}
-
 function shouldDisplayPhotos() {
     const answer = prompt('Czy chcesz wyświetlić zdjęcia?');
     return (answer.toLowerCase() === 'tak');
