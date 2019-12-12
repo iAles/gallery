@@ -1,23 +1,20 @@
 const images = [
     {
         url: "https://picsum.photos/id/40/300/150",
-        title: "KOTEŁ",
-        author: 'ja',
-        price: '1000'
-
+        title: "Kotek",
+        author: 'Ja',
+        price: 1000
     },
     {
         url: "https://picsum.photos/id/50/300/150",
-        title: "Drank bird",
+        title: 'Może Statek i Ptak',
         author: 'Zenek',
-        price: '2000'
-
+        price: 2000
     },
     {
         url: "https://picsum.photos/id/60/300/150",
-        title: "iMac",
+        title: 'Notesy i Biurko',
         author: 'On',
-        price: '3000'
-
-    }
+        price: 3000
+    },
 ];

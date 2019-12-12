@@ -36,14 +36,14 @@ function renderPhoto(photo) {
     $card.classList.add('card', 'col-3', 'mx-4');
 
     const $img = document.createElement('img');
-    $img.src = photo.url;
+    $img.src = photo.imageUrl;
 
     const $body = document.createElement('div');
     $body.classList.add('card-body');
 
     const $title = document.createElement('h5');
     $title.classList.add('card-title');
-    $title.textContent = photo.title;
+    $title.textContent = photo.description;
 
     // Group HTML Elements
     $card.append($img);
@@ -71,8 +71,8 @@ function displayPhotos(photos) {
     // for (const photo of photos) {
     //     renderPhoto(photo);
     photos.forEach(function (photo) {
-        console.group(photo.author);
-        console.info(photo.title);
+        console.group(photo.id);
+        console.info(photo.author.name);
         console.groupEnd();
         renderPhoto(photo);
     })
@@ -91,43 +91,57 @@ function shouldDisplayPhotos() {
     return (answer.toLowerCase() === 'tak');
 }
 
-function isEmpty() {
+function isEmpty(images) {
     return images.length === 0;
 }
 
-loader.show();
 
-if (!isEmpty()) {
-    console.log('zdjęcia istnieją');
-    displayPhotos(images);
-} else {
-    console.log('zdjęcia nie istnieją');
-    displayMessage('Nie ma zdjęć');
+function main() {
+    loader.show();
+
+    fetchPhotosFromRemote()
+        .then(function (images) {
+            if (!isEmpty(images)) {
+                console.log('zdjęcia istnieją');
+                displayPhotos(images);
+            } else {
+                console.log('zdjęcia nie istnieją');
+                displayMessage('Nie ma zdjęć');
+            }
+        })
+        .catch(function () {
+            displayErrorMessage('Problem z pobraniem zdjęć');
+        })
+        .finally(function () {
+            // loader.hide();
+        })
+
+
 }
-
-setTimeout(function () {
-    console.info('chowamy loaderka');
-    loader.hide();
-}, 1500); // 1.5s
-
-const authors = images.map(function (image) {
-    return image.author;
-});
-console.log(authors);
+main();
 
 
-const masterPrice = images.reduce(function (memory, image) {
-    console.warn(memory);
-    memory = memory + image.price;
-    return memory;
-}, 0);
 
-const groupByPrice = images.reduce(function (memory, image) {
-	memory[image.price] = image;
-	return memory;
-}, {})
+// setTimeout(function () {
+//     console.info('chowamy loaderka');
+// }, 1500); // 1.5s
+
+// const authors = images.map(function (image) {
+//     return image.author;
+// });
+// console.log(authors);
 
 
+// const masterPrice = images.reduce(function (memory, image) {
+//     console.warn(memory);
+//     memory = memory + image.price;
+//     return memory;
+// }, 0);
+
+// const groupByPrice = images.reduce(function (memory, image) {
+//     memory[image.price] = image;
+//     return memory;
+// }, {})
 
 
 
