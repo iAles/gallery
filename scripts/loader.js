@@ -6,7 +6,7 @@ loader.show = function () {
 
     //Dodanie klasy css do DOM
     img.classList.add('loader');
-    
+
     //Ustawienie atrybutu src
     img.src = 'images/loader.svg';
 
@@ -19,10 +19,12 @@ loader.show = function () {
 loader.hide = function () {
     //Pobrać referencje do loadrea
     const $loader = document.querySelector('.loader');
-    
+    if ($loader) {
+        $loader.remove();
+    }
 
     //usunąć go z DOM  
-    $loader.remove();
+
 };
 
 console.log(loader);

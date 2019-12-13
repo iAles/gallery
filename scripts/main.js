@@ -67,9 +67,8 @@ function renderPhoto(photo) {
 /**
  * @param {Photos} photos
  */
+
 function displayPhotos(photos) {
-    // for (const photo of photos) {
-    //     renderPhoto(photo);
     photos.forEach(function (photo) {
         console.group(photo.id);
         console.info(photo.author.name);
@@ -99,7 +98,14 @@ function isEmpty(images) {
 function main() {
     loader.show();
 
-    fetchPhotosFromRemote()
+    fetchPhotosFromLocal()
+        .then(function (images){
+            return images.map(function(image){
+                image.imageUrl = image.url;
+                image.description = image.title;
+                return image;
+            });
+        })
         .then(function (images) {
             if (!isEmpty(images)) {
                 console.log('zdjęcia istnieją');
@@ -113,6 +119,14 @@ function main() {
             displayErrorMessage('Problem z pobraniem zdjęć');
         })
         .finally(function () {
+            setTimeout(function () {
+                console.info('chowamy loaderka');
+                loader.hide();
+            }, 1000);
+
+            //setTimeout(function () {
+            //     console.info('chowamy loaderka');
+            // }, 1500); // 1.5s
             // loader.hide();
         })
 
